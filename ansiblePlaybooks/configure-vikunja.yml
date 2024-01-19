@@ -13,7 +13,7 @@
 
     - name: Create Vikunja folder
       ansible.builtin.file:
-        path: /srv/vikunja
+        path: /srv/vikunja/
         state: directory
         group: vikunjaAdmins
 

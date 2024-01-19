@@ -16,7 +16,12 @@
         path: /srv/Vikunja
         state: directory
         group: vikunjaAdmins
-    
+
+    - name: Crate Vikunja DB folder    
+    ansible.builtin.file:
+      path: /srv/Vikunja/db
+      user: vikunja
+
     - name: Move all docker related files to /srv/vikunja
       ansible.builtin.copy:
         src: ../resources/vikunja/

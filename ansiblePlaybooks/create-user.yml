@@ -18,5 +18,4 @@
         name: vikunja
         shell: /bin/bash
         uid: 1005
-        groups: vikunjaAdmins
         append: yes

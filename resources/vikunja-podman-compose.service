@@ -1,0 +1,17 @@
+[Unit]
+Description=Vikunja service with podman compose
+After=network.target
+
+[Service]
+WorkingDirectory=/srv/vikunja
+Restart=always
+
+# Compose up
+ExecStart=podman-compose up
+
+# Compose down, remove containers and volumes
+ExecStop=podman-compose down
+
+[Install]
+WantedBy=default.target
+RequiredBy=network.target

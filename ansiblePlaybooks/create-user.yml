@@ -1,0 +1,14 @@
+---
+- name: Create non root admin user
+  hosts: localhost
+  connection: local
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Create non root admin user and grant permissions to zammad folder
+      ansible.builtin.user:
+        name: micah
+        shell: /bin/bash
+        groups: wheel, vikunjaAdmins
+        append: yes

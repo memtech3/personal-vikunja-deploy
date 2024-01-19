@@ -1,0 +1,31 @@
+---
+- name: Deploy Vikunja with podman compose on Rocky Linux 9
+  hosts: localhost
+  connection: local
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Ensure group "vikunjaAdmins" exists
+      ansible.builtin.group:
+        name: vikunjaAdmins
+        state: present
+
+    - name: Create Vikunja folder
+      ansible.builtin.file:
+        path: /srv/Vikunja
+        state: directory
+        group: vikunjaAdmins
+    
+    - name: Move all docker related files to /srv/vikunja
+      ansible.builtin.copy:
+        src: ../resources/vikunja/
+        dest: /srv/vikunja/
+
+    - name: Create service to run Vikunja containers with podman
+      ansible.builtin.copy:
+        src: ./resources/vikunja-podman-compose.service
+        dest: /etc/systemd/system/vikunja-podman-compose.service
+    
+    - name: Enable Vikunja podman compose service
+      ansible.builtin.shell: systemctl enable vikunja-podman-compose --now

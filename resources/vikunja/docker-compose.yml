@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  api:
+    image: vikunja/api
+    environment:
+      VIKUNJA_DATABASE_TYPE: sqlite
+      VIKUNJA_DATABASE_PATH: /db/vikunja.db
+      VIKUNJA_SERVICE_JWTSECRET: ${JWT_TOKEN}
+      VIKUNJA_SERVICE_FRONTENDURL: ${DOMAIN}
+    volumes:
+      - ./files:/app/vikunja/files
+      - ./db:/db
+    restart: unless-stopped
+  frontend:
+    image: vikunja/frontend
+    restart: unless-stopped
+  caddy:
+    image: caddy
+    restart: unless-stopped
+    ports:
+        - "80:80"
+        - "443:443"
+    depends_on:
+      - api
+      - frontend
+    volumes:
+        - ./Caddyfile:/etc/caddy/Caddyfile:ro

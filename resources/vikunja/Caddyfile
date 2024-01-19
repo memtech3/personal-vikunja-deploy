@@ -1,0 +1,14 @@
+v.micah.icu {
+    reverse_proxy /api/* api:3456
+    reverse_proxy /.well-known/* api:3456
+    reverse_proxy /dav/* api:3456
+    reverse_proxy frontend:80
+}
+
+cockpit.v.micah.icu {
+	reverse_proxy 127.0.0.1:9090
+}
+
+v.micah.icu:2017 {
+	respond "Hello, world!"
+}

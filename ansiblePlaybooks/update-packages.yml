@@ -1,0 +1,19 @@
+---
+- name: Update all packages
+  hosts: localhost
+  connection: local
+  become: true
+  become_user: root
+
+  tasks:
+
+    - name: Update all packagess
+      ansible.builtin.dnf: 
+        name: '*'
+        state: latest
+        update_cache: yes
+        update_only: yes
+
+    - name: Remove unneeded packages
+      ansible.builtin.dnf:
+        autoremove: yes

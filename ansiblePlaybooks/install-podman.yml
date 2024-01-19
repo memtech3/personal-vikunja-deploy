@@ -1,0 +1,12 @@
+---
+- name: Install podman and podman compose
+  hosts: localhost
+  connection: local
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Install podman
+      ansible.builtin.dnf: 
+        name: 'podman, podman-compose'
+        state: latest

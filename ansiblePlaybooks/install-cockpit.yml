@@ -1,0 +1,33 @@
+---
+- name: Install cockpit-project administration panel 
+  hosts: localhost
+  connection: local
+  become: true
+  become_user: root
+
+  tasks:
+
+    - name: Install latest cockpit and cockpit-podman plugin
+      ansible.builtin.dnf: 
+        name: 'cockpit, cockpit-podman'
+        state: latest
+
+    - name: Copy in custom cockpit config
+      ansible.builtin.copy:
+        src: ../resources/cockpit/cockpit.conf
+        dest: /etc/cockpit/cockpit.conf
+
+    - name: Copy in custom cockpit systemd socket config (listen address)
+      ansible.builtin.copy:
+        src: ../resources/cockpit/listen.conf
+        dest: /etc/systemd/system/cockpit.socket.d/
+    
+    - name: Reload systemctl
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+
+    - name: Enable and start cockpit service
+      ansible.builtin.systemd:
+        name: cockpit.socket
+        state: started
+        enabled: yes

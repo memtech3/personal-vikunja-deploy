@@ -8,6 +8,7 @@ services:
       VIKUNJA_DATABASE_PATH: /db/vikunja.db
       VIKUNJA_SERVICE_FRONTENDURL: ${DOMAIN}
       PUID: ${PUID}
+      PGID: ${PGID}
     volumes:
       - ./files:/app/vikunja/files
       - ./db:/db

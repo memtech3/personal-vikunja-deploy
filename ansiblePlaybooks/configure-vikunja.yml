@@ -29,3 +29,6 @@
     
     - name: Enable Vikunja podman compose service
       ansible.builtin.shell: systemctl enable vikunja-podman-compose --now
+
+    - name: Restart Vikunja podman compose service in case already exists
+      ansible.builtin.shell: systemctl restart vikunja-podman-compose

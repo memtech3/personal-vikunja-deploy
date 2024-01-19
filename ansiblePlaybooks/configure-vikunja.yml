@@ -24,7 +24,7 @@
 
     - name: Create service to run Vikunja containers with podman
       ansible.builtin.copy:
-        src: ./resources/vikunja-podman-compose.service
+        src: ../resources/vikunja-podman-compose.service
         dest: /etc/systemd/system/vikunja-podman-compose.service
     
     - name: Enable Vikunja podman compose service

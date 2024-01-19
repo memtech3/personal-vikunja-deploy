@@ -12,3 +12,11 @@
         shell: /bin/bash
         groups: wheel, vikunjaAdmins
         append: yes
+    
+    - name: Create non root vikunja user and grant permissions to vikunja folder
+      ansible.builtin.user:
+        name: vikunja
+        shell: /bin/bash
+        uid: 1005
+        groups: vikunjaAdmins
+        append: yes

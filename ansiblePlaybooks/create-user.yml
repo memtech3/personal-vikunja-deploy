@@ -18,4 +18,3 @@
         name: vikunja
         shell: /bin/bash
         uid: 1005
-        append: yes

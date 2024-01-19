@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api:
-    image: vikunja/api
+    image: docker.io/vikunja/api
     environment:
       VIKUNJA_DATABASE_TYPE: sqlite
       VIKUNJA_DATABASE_PATH: /db/vikunja.db
@@ -13,10 +13,10 @@ services:
       - ./db:/db
     restart: unless-stopped
   frontend:
-    image: vikunja/frontend
+    image: docker.io/vikunja/frontend
     restart: unless-stopped
   caddy:
-    image: caddy
+    image: docker.io/caddy
     restart: unless-stopped
     ports:
         - "80:80"

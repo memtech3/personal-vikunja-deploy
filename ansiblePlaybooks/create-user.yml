@@ -6,7 +6,7 @@
   become_user: root
 
   tasks:
-    - name: Create non root admin user and grant permissions to zammad folder
+    - name: Create non root admin user and grant permissions to vikunja folder
       ansible.builtin.user:
         name: micah
         shell: /bin/bash

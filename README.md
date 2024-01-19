@@ -11,4 +11,4 @@ Ansible playbooks I use to deploy and manage my personal vikunja server
 ### Download and run this playbook
 `sudo dnf install -y git && git clone https://github.com/memtech3/personal-vikunja-deploy && cd personal-vikunja-deploy && chmod +x ./setup.sh && sudo ./setup.sh`
 ### Update and run this playbook
-`git fetch && git pull && sudo ansible-playbook master-deploy-zammad.yml`
+`git fetch && git pull && sudo ansible-playbook master-deploy-vikunja.yml`

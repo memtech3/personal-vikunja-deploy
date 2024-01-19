@@ -3,4 +3,4 @@
 
 dnf install -y epel-release
 dnf install -y ansible
-ansible-playbook master-deploy-zammad.yml
+ansible-playbook master-deploy-vikunja.yml

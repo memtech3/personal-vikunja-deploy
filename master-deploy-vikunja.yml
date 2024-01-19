@@ -9,7 +9,7 @@
 - import_playbook: ./ansiblePlaybooks/update-packages.yml
 - import_playbook: ./ansiblePlaybooks/install-podman.yml
 - import_playbook: ./ansiblePlaybooks/install-cockpit.yml
-- import_playbook: ./ansiblePlaybooks/configure-vikunja.yml
 - import_playbook: ./ansiblePlaybooks/create-user.yml
+- import_playbook: ./ansiblePlaybooks/configure-vikunja.yml
 
     
